@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from webapp.services import ShowServices
+from SwordClient.webapp.services import ShowServices
 
 show = Blueprint('show', __name__)
 

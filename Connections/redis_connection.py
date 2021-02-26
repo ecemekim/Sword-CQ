@@ -10,7 +10,6 @@ def listen_and_generate():
     pubsub.subscribe("jsonrows")
 
     f = open("final.json", "a")
-    print("Started")
     for message in pubsub.listen():
         if message.get("data") == 1:
             continue
