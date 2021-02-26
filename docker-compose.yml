@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  redis-con:
+    build:
+      context: ./Connections
+      dockerfile: Dockerfile
+
+  sword-client:
+    build:
+      context: ./SwordClient
+      dockerfile: Dockerfile
+
+  sword-server:
+    build:
+      context: ./SwordServer
+      dockerfile: Dockerfile
