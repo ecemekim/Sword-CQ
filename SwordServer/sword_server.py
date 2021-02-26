@@ -14,7 +14,7 @@ class Sword(sword_pb2_grpc.SwordServicer):
 
     def DumpJsons(self, request, context):
         for i in range(1, 11):
-            with open(f"users/{i}.json", "r") as f:
+            with open(f"./users/{i}.json", "r") as f:
                 file = json.load(f)
             for message in file:
                 self.r.publish("jsonrows", json.dumps(message))
