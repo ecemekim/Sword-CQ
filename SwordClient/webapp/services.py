@@ -1,9 +1,9 @@
 import logging
-from SwordClient.sword_client import run
+from sword_client import run
 
 
 class ShowServices:
 
     def activate_job(self):
-        logging.basicConfig()
-        run()
+        logging.basicConfig(level=logging.DEBUG)
+        logging.debug(run())

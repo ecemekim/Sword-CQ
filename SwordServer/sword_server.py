@@ -10,7 +10,7 @@ import sword_pb2_grpc
 
 
 class Sword(sword_pb2_grpc.SwordServicer):
-    r = redis.Redis(host="localhost", port=6379, db=0)
+    r = redis.Redis(host="172.20.0.6", port=6379, db=0)
 
     def DumpJsons(self, request, context):
         for i in range(1, 11):
@@ -30,5 +30,5 @@ def serve():
 
 
 if __name__ == '__main__':
-    logging.basicConfig()
+    logging.basicConfig(level=logging.DEBUG)
     serve()

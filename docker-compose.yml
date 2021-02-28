@@ -1,0 +1,44 @@
+version: "3.3"
+
+networks:
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+  redis:
+    image: "redis:alpine"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.6
+    ports:
+    - "6379:6379"
+
+  redis-con:
+    build:
+      context: ./Connections
+      dockerfile: Dockerfile
+    networks:
+      frontend:
+    depends_on:
+      - redis
+
+  sword-client:
+    build:
+      context: ./SwordClient
+      dockerfile: Dockerfile
+    networks:
+      frontend:
+    ports:
+      - "5000:5000"
+
+  sword-server:
+    build:
+      context: ./SwordServer
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"
+    networks:
+      frontend:
+        ipv4_address: 172.20.0.5
